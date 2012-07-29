@@ -2,3 +2,4 @@
 # vim: syntax=python
 
 DEBUG = False
+SECRET_KEY = 'not-so-secret-change-this'

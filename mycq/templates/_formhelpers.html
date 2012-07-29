@@ -1,0 +1,32 @@
+{% macro render_field(field) %}
+    <li class="formFieldContainer">
+        {{ field.label }}
+        {% if field.errors %}
+            <div class="error">
+        {% endif %}
+        {{ field(**kwargs)|safe }}
+
+        {% if field.flags.required %}
+            <span style="color:#f00;">*</span>
+        {% endif %}
+        {% if field.errors %}
+                {% for error in field.errors %}
+                <br/>
+                <span class="err_desc ">{{ error }}</span><br/>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </li>
+{% endmacro %}
+
+{% macro render_field_reverse(field) %}
+    <li class="formFieldContainerReverse margin-left_225">
+        {{ field(**kwargs)|safe }}
+        {% if field.errors %}
+            <ul class="errors">
+                {% for error in field.errors %}<li>{{ error }}{% endfor %}
+            </ul>
+        {% endif %}
+        {{ field.label }}
+    </li>
+{% endmacro %}
