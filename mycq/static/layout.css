@@ -14,9 +14,9 @@ code{
     display:block;
     background: #FFFFFF;
     border-left:3px solid #006C00;
-    border-top: 1px solid #E3E3E3;
-    border-right: 1px solid #E3E3E3;
-    border-bottom: 1px solid #E3E3E3;
+    border-top: 1px solid #96E4FF;
+    border-right: 1px solid #96E4FF;
+    border-bottom: 1px solid #96E4FF;
     color: #0000CC;
     font-family: monospace;
 }
@@ -72,14 +72,14 @@ form,div.container{
 div.header{
     margin:10px 0px;
     padding-left: 115px;
-    padding-right:10px;
+    padding-right:20px;
     padding-bottom: 10px;
     height:60px;
     line-height: 60px;
     font-size: 24px;
     font-weight:bold;
     text-align: right;
-    color: #00AFEF;
+    color: #0181AF;
     box-shadow: 2px 2px 2px #DDD;
 }
 
@@ -87,11 +87,15 @@ label{
     width:130px;
     margin-right: 10px;
     display: inline-block;
-    color: #333;
+    color: #416F7F;
+}
+#frmQuestion label{
+    width:650px !important;
 }
 h2{
     color:#0181AF;
     margin-top:0px;
+    margin-bottom: 30px;
     padding-bottom: 5px;
     border-bottom: 1px solid #13A0D3;
 }
@@ -99,7 +103,7 @@ input[type="text"], input[type="email"], input[type="textarea"] {
     border-radius : 3px;
     padding : 6px;
     font-size: 16px;
-    border: 1px solid #B3B3B3;
+    border: 1px solid #58B1CE;
     color : #333;
     max-width: 300px;
     width:300px;
@@ -143,7 +147,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(1, #dbdbdb)); 
    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#dbdbdb',GradientType=0); 
    background-image: -ms-linear-gradient(top, #fafafa 0%, #dbdbdb 100%); 
-   border-color: #999
+   border-color: #999;
 
  
 }
@@ -155,7 +159,7 @@ input[type="submit"]:focus, input[type="button"]:focus {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dbdbdb), color-stop(1, #fafafa)); 
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dbdbdb', endColorstr='#fafafa',GradientType=0);
     background-image: -ms-linear-gradient(top, #dbdbdb 0%, #fafafa 100%); 
-    border-color: #999
+    border-color: #999;
 }
 
 input[type="submit"].active, input[type="submit"]:active, input[type="button"].active, input[type="button"]:active {
@@ -165,7 +169,7 @@ input[type="submit"].active, input[type="submit"]:active, input[type="button"].a
    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dbdbdb), color-stop(1, #fafafa)); 
    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dbdbdb', endColorstr='#fafafa',GradientType=0); 
    background-image: -ms-linear-gradient(top, #dbdbdb 0%, #fafafa 100%); 
-   border-color: #999
+   border-color: #999;
 }
 
 input[type="submit"].disabled, input[type="submit"][disabled], input[type="button"].disabled, input[type="button"][disabled] {
@@ -188,7 +192,7 @@ p.err_desc{
     font-weight: bold;
 }
 #answer{
-    background: #F6F6F6; 
+    background: #F3FFFF; 
     margin:10px 0px;
     list-style: none;
     padding:10px;
@@ -210,4 +214,7 @@ div.legend{
 #frmQuestion .err_desc{
     text-align:center;
     padding-left:0px;
+}
+ol > li{
+    margin-bottom: 10px;
 }
