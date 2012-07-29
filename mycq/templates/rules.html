@@ -2,11 +2,12 @@
 
 {% block content %}
   <form action="{{ url_for('question') }}">
-      <h2>Rules</h2>
+      <h2>Rules &amp; Instructions</h2>
       <ol>
-        <li>First Rule<li>
-        <li>Second Rule<li>
-        <li>Third Rule<li>
+        <li>Duration of the test is 20 minutes</li>
+        <li>Once a question is answered it <strong>cannot</strong> be changed.</li>
+        <li>You can skip any question and answer them later.</li>
+        <li>You get <strong>+10</strong> for every correct answer and <strong>-5</strong> for every incorrect answer.</li>
       </ol>
       <input type="submit" value="Begin Test">
   </form>
