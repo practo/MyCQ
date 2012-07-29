@@ -27,6 +27,7 @@ def index():
 def signup():
     form = SignupForm(request.form)
     if form.validate_on_submit():
+        user_store.srem('signup_tokens', form.token.data)
         user = User(form)
         user.save()
         session['user'] = user

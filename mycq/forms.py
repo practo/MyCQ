@@ -7,6 +7,16 @@ class SignupForm(Form):
     roll_no = TextField("Roll No", validators=[Required()])
     branch = TextField("Branch", validators=[Required()])
     email = EmailField("Email", validators=[Required(), validators.Email()])
+    token = TextField("Registration Token",
+                      validators=[Required(),
+                                  validators.regexp(r'^[0-9]{6}$',
+                                                    message='Invalid registration token')])
+
+    def validate_token(form, field):
+        if len(field.errors) > 0:
+            return
+        if not user_store.sismember('signup_tokens', field.data):
+            field.errors.append('Incorrect registration token')
 
 
 class QuestionFormMixin():
