@@ -1,9 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <h2>Rules</h2>
-
   <form action="{{ url_for('question') }}">
+      <h2>Rules</h2>
       <input type="submit" value="Begin Test">
   </form>
 {% endblock %}

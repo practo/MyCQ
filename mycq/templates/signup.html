@@ -2,11 +2,12 @@
 {% from "_formhelpers.html" import render_field with context %}
 {% block content %}
 <form action="{{ url_for('signup') }}" method="POST">
+<h2>Registration</h2>
   {{ form.csrf_token }}
-  {{ render_field(form.name) }}
-  {{ render_field(form.email) }}
-  {{ render_field(form.roll_no) }}
-  {{ render_field(form.branch) }}
-  <input type="submit" value="Take Test">
+  <div>{{ render_field(form.name) }}</div>
+  <div>{{ render_field(form.email) }}</div>
+  <div>{{ render_field(form.roll_no) }}</div>
+  <div>{{ render_field(form.branch) }}</div>
+  <label></label><input type="submit" value="Take Test">
 </form>
 {% endblock %}

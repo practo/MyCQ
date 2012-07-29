@@ -1,7 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Overview</h2>
+<form action="{{ url_for('finish') }}" method="POST">
+<h2>Overview </h2>
+<div class="legend">
+Legend:
+    <span class="answered legend-box">&nbsp</span> - Answered
+    <span class="skipped legend-box">&nbsp</span> - Skipped
+    <span class="new legend-box">&nbsp</span> - New
+</ul>
+</div>
 {% for question in questions %}
 <span class="{{ question.status }} question-box">
     {% if question.status != 'answered' %}
@@ -12,16 +20,8 @@
 </span>
 {% endfor %}
 <div style="clear: both;">&nbsp;</div>
-<form action="{{ url_for('finish') }}" method="POST">
     {{ complete_form.csrf_token }}
     <input type="submit" value="Finish Test">
 </form>
-<div style="float: right; border: 1px solid;">
-Legend:
-<ul>
-    <li><span class="answered legend-box">&nbsp</span> - Answered</li>
-    <li><span class="skipped legend-box">&nbsp</span> - Skipped</li>
-    <li><span class="new legend-box">&nbsp</span> - New</li>
-</ul>
-</div>
+
 {% endblock %}

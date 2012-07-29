@@ -16,7 +16,7 @@ class User():
 
     def save(self):
         if self.id is None:
-            DESIRED_QUESTIONS = 20
+            DESIRED_QUESTIONS = 3
             self.id = str(uuid4())
             all_questions = user_store.keys('question:*')
             all_questions = [int(x[9:]) for x in all_questions]

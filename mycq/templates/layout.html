@@ -4,9 +4,27 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
     {% block head %}
     {% endblock %}
+<style>
+    div.header{
+        margin:10px 0px;
+        background: url("{{ url_for('static', filename='images/logo.png') }}") no-repeat;
+        padding-left: 115px;
+        padding-right:10px;
+        padding-bottom: 10px;
+        height:60px;
+        line-height: 60px;
+        font-size: 24px;
+        font-weight:bold;
+        text-align: right;
+        color: #00AFEF;
+        box-shadow: 2px 2px 2px #CCC;
+    }
+</style>
 </head>
-
 <body>
-  {% block content %} {% endblock %}
+    <div class="header">MyCQ</div>
+    <div class="inner-body">
+    {% block content %} {% endblock %}      
+    </div>
 </body>
 </html>
