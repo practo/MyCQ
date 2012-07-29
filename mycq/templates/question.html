@@ -9,7 +9,7 @@
 <form action="{{ url_for('question', qid=form.question.data) }}" method="POST" id="frmQuestion">
   {{ form.csrf_token }}
   <h2>Question</h2>
-  <p>{{ form.question.label }}</p>
+  <p>{{ form.question.label|safe }}</p>
   
   {{ render_field(form.answer) }}
   <input type="submit" value="Submit">   
