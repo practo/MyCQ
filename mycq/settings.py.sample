@@ -1,0 +1,4 @@
+# Copy this to settings.py and edit the settings
+# vim: syntax=python
+
+DEBUG = False
