@@ -11,11 +11,11 @@ Legend:
 </ul>
 </div>
 {% for question in questions %}
-<span class="{{ question.status }} question-box">
+<span >
     {% if question.status != 'answered' %}
-    <a href={{ url_for('question', qid=question.id) }}>{{ question.id }}</a>
+    <a class="{{ question.status }} question-box" href={{ url_for('question', qid=question.id) }}>{{ question.id }}</a>
     {% else %}
-    <span>{{ question.id }}</span>
+    <span class="{{ question.status }} question-box">{{ question.id }}</span>
     {% endif %}
 </span>
 {% endfor %}

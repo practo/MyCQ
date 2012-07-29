@@ -23,10 +23,10 @@ code{
 .question-box {
     display: block;
     float: left;
-    width: 30px;
+    padding: 5px 10px;
     text-align: center;
     margin: 2px;
-    border: 1px solid;
+    border: 1px solid #CCC;
 }
 
 .legend-box {
@@ -34,16 +34,23 @@ code{
     width: 30px;
     text-align: center;
     margin: 2px;
-    border: 1px solid;
+    border: 1px solid #CCC;
 }
 .answered {
     background-color: #7f7;
+    border-color: #48BA48;
+    color: #006400;
 }
 
 .skipped {
     background-color: #ff7;
+    border-color:#FFA500;
+    color: #FF4500;
 }
-
+.skipped:hover{
+    background-color: #FC8000;
+    color: #FFF;
+}
 .new {
     background-color: #fff;
 }
@@ -54,24 +61,39 @@ a {
 div.inner-body{
     margin:30px;
 }
-form{
+form,div.container{
     width: 700px;
     margin: auto;
     padding:20px;
-    background: #EFEFEF;
+    background: #E9FFFF;
     border-radius: 3px;
     font-size: 14px;
 }
+div.header{
+    margin:10px 0px;
+    padding-left: 115px;
+    padding-right:10px;
+    padding-bottom: 10px;
+    height:60px;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight:bold;
+    text-align: right;
+    color: #00AFEF;
+    box-shadow: 2px 2px 2px #DDD;
+}
+
 label{
     width:130px;
     margin-right: 10px;
     display: inline-block;
     color: #333;
 }
-form h2{
+h2{
+    color:#0181AF;
     margin-top:0px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #13A0D3;
 }
 input[type="text"], input[type="email"], input[type="textarea"] {
     border-radius : 3px;
@@ -184,4 +206,8 @@ p.err_desc{
 div.legend{
     color: #333;
     margin:10px 0px 30px 0px;
+}
+#frmQuestion .err_desc{
+    text-align:center;
+    padding-left:0px;
 }
