@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% from "_formhelpers.html" import render_field with context %}
+{% block content %}
+<form action="{{ url_for('question', qid=form.question.data) }}" method="POST">
+  {{ form.csrf_token }}
+  <h2>Question</h2>
+  {{ form.question.label }}
+  {{ render_field(form.answer) }}
+  <input type="submit" value="Submit">
+</form>
+<form action="{{ url_for('skip_question', qid=form.question.data) }}" method="POST">
+  {{ skip_form.csrf_token }}
+  <input type="submit" value="Answer Later">
+</form>
+{% endblock %}

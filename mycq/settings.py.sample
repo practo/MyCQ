@@ -3,3 +3,7 @@
 
 DEBUG = False
 SECRET_KEY = 'not-so-secret-change-this'
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_USERS_DB = 1

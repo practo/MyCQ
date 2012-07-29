@@ -1,6 +1,39 @@
 body {
   margin: 30px;
 }
-form li {
+
+li {
   list-style: None;
+}
+
+.question-box {
+    display: block;
+    float: left;
+    width: 30px;
+    text-align: center;
+    margin: 2px;
+    border: 1px solid;
+}
+
+.legend-box {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    margin: 2px;
+    border: 1px solid;
+}
+.answered {
+    background-color: #7f7;
+}
+
+.skipped {
+    background-color: #ff7;
+}
+
+.new {
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
 }
