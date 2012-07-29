@@ -45,9 +45,6 @@ class User():
     def can_skip_question(self, qid):
         if not user_store.sismember('user_questions:' + self.id, qid):
             return False
-        # Presently users are not allowed to skip the question twice
-        if user_store.sismember('user_skipped_questions:' + self.id, qid):
-            return False
         return True
 
     def answer_question(self, form):
