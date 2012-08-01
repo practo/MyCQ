@@ -1,11 +1,6 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_field with context %}
 {% block content %}
-<script>
-    function answerLater(){
-        frmAnswerLater.submit();
-    }  
-</script>
 <form action="{{ url_for('question', qid=form.question.data) }}" method="POST" id="frmQuestion">
   {{ form.csrf_token }}
   <h2>Question</h2>
@@ -13,9 +8,19 @@
   
   {{ render_field(form.answer) }}
   <input type="submit" value="Submit">   
-  <input type="button" value="Answer Later" onClick="answerLater();" style="float:right;">
+  <script>
+    document.write("<input type=\"button\" value=\"Answer Later\" onClick=\"answerLater();\" style=\"float:right;\">");
+  </script>
 </form>
-<form action="{{ url_for('skip_question', qid=form.question.data) }}" method="POST" name="frmAnswerLater">
+<form action="{{ url_for('skip_question', qid=form.question.data) }}" method="POST" id="frmAnswerLater">
   {{ skip_form.csrf_token }}
+  <noscript>
+    <input type="submit" value="Answer Later">
+  </noscript>
 </form>
+<script>
+    function answerLater(){
+        document.getElementById('frmAnswerLater').submit();
+    }
+</script>
 {% endblock %}
