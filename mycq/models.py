@@ -23,7 +23,7 @@ class User():
             if len(all_questions) < DESIRED_QUESTIONS:
                 raise Exception("Not enough questions")
             random_questions = random.sample(all_questions, DESIRED_QUESTIONS)
-            for q in sorted(random_questions):
+            for q in random_questions:
                 user_store.sadd('user_questions:' + self.id, q)
         user_store.hmset('user:' + self.id, {
             'id': self.id,
@@ -62,13 +62,13 @@ class User():
         skipped = user_store.smembers('user_skipped_questions:' + self.id)
         new = unanswered - skipped
         if len(new) > 0:
-            return sorted(list(new))[0]
+            return sorted(int(x) for x in new)[0]
         return None
 
     def get_overview(self):
         qids = user_store.smembers('user_questions:' + self.id)
         questions = []
-        for qid in sorted([int(x) for x in qids]):
+        for qid in sorted(int(x) for x in qids):
             question = {'id': qid}
             if user_store.sismember('user_answered_questions:' + self.id, qid):
                 question['status'] = 'answered'

@@ -13,9 +13,9 @@ Legend:
 {% for question in questions %}
 <span >
     {% if question.status != 'answered' %}
-    <a class="{{ question.status }} question-box" href={{ url_for('question', qid=question.id) }}>{{ question.id }}</a>
+    <a class="{{ question.status }} question-box" href={{ url_for('question', qid=question.id) }}>{{ loop.index }}</a>
     {% else %}
-    <span class="{{ question.status }} question-box">{{ question.id }}</span>
+    <span class="{{ question.status }} question-box">{{ loop.index }}</span>
     {% endif %}
 </span>
 {% endfor %}
