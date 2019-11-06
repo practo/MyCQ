@@ -150,7 +150,7 @@
         "option2": "32", 
         "option3": "24", 
         "option4": "22", 
-        "question": "<code>#include&lt;stdio.h&rt;<br>#define max 10+2<br>int main(){ <br>   int i; <br>   i=max*max; <br>   printf(\"%d\",i); <br>   return 0;<br>}</code>"
+        "question": "<code>#include&lt;stdio.h&gt;<br>#define max 10+2<br>int main(){ <br>   int i; <br>   i=max*max; <br>   printf(\"%d\",i); <br>   return 0;<br>}</code>"
     }, 
     {
         "correct_answer": "1", 
