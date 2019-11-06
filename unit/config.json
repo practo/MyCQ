@@ -1,0 +1,17 @@
+{
+    "listeners": {
+        "*:5000": {
+            "pass": "applications/mycq"
+        }
+    },
+    "applications": {
+        "mycq": {
+            "type": "python 2",
+            "path": "/www/",
+            "module": "mycq",
+	    "user": "root",
+	    "group": "root",
+	    "processes": 3
+        }
+    }
+}

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+    - "5000:5000"
+    networks:
+      - redis-net
+    depends_on:
+      - redis
+    volumes:
+      - .:/www
+      - ./unit/config.json:/docker-entrypoint.d/config.json
+    environment:
+      - MYCQ_SETTINGS=/www/mycq/settings-docker.py
+  redis:
+    image: redis
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    networks:
+      - redis-net
+    volumes:
+      - redis-data:/data
+
+networks:
+  redis-net:
+
+volumes:
+  redis-data:

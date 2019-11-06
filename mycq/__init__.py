@@ -3,6 +3,7 @@ from redis import Redis
 import os
 
 app = Flask(__name__)
+application = app  # For Nginx Unit
 
 # Settings
 app.config.from_object('mycq.settings')
