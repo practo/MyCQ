@@ -1,12 +1,14 @@
 <!doctype html>
 <html>
 <head>
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    <title>Practo MCQ Test</title>
     {% block head %}
     {% endblock %}
 <style>
     div.header{
-        background: url("{{ url_for('static', filename='images/logo.png') }}") no-repeat;
+        background: url("{{ url_for('static', filename='images/logo.jpg') }}") no-repeat;
     }
 </style>
 </head>
