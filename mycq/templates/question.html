@@ -22,5 +22,8 @@
     function answerLater(){
         document.getElementById('frmAnswerLater').submit();
     }
+    document.getElementById("answer").childNodes.forEach(function (item, index) {
+       item.addEventListener("click", function () { this.childNodes[0].click()})
+    })
 </script>
 {% endblock %}
