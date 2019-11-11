@@ -3,6 +3,31 @@ from mycq import app, user_store
 from mycq.forms import SignupForm, QuestionForm, SkipQuestionForm, CompleteTestForm
 from mycq.models import User
 from functools import wraps
+from time import time
+from datetime import datetime
+
+
+def get_timer_data():
+    active = False
+    expiry_time = user_store.get('expiry_time')
+    time_remaining = None
+    time_remaining_str = None
+    if expiry_time:
+        time_remaining = int(expiry_time) - time()
+        if time_remaining > 0:
+            active = True
+            time_remaining_str = datetime.utcfromtimestamp(time_remaining).strftime("%H:%M:%S")
+    return {
+        'active': active,
+        'time_remaining': time_remaining,
+        'time_remaining_str': time_remaining_str
+    }
+
+
+@app.context_processor
+def inject_timer():
+    return get_timer_data()
+
 
 def signup_required(f):
     @wraps(f)
@@ -16,6 +41,9 @@ def signup_required(f):
 @app.route('/', methods=['GET'])
 @signup_required
 def index():
+    timer_data = get_timer_data()
+    if not timer_data['active']:
+        return redirect(url_for('thankyou'))
     user = session.get('user')
     if user.has_completed_test():
         return redirect(url_for('thankyou'))
@@ -48,6 +76,9 @@ def rules():
 @app.route('/question/<int:qid>', methods=['GET', 'POST'])
 @signup_required
 def question(qid):
+    timer_data = get_timer_data()
+    if not timer_data['active']:
+        return redirect(url_for('thankyou'))
     user = session.get('user')
     form = QuestionForm(request.form)
     if qid is None:
@@ -79,6 +110,9 @@ def question(qid):
 @app.route('/overview', methods=['GET'])
 @signup_required
 def overview():
+    timer_data = get_timer_data()
+    if not timer_data['active']:
+        return redirect(url_for('thankyou'))
     user = session.get('user')
     if user.has_completed_test():
         return redirect(url_for('thankyou'))
@@ -90,6 +124,9 @@ def overview():
 @app.route('/skip-question/<int:qid>', methods=['POST'])
 @signup_required
 def skip_question(qid):
+    timer_data = get_timer_data()
+    if not timer_data['active']:
+        return redirect(url_for('thankyou'))
     user = session.get('user')
     form = SkipQuestionForm(request.form)
     form.question.data = qid
@@ -108,6 +145,9 @@ def skip_question(qid):
 @app.route('/finish', methods=['POST'])
 @signup_required
 def finish():
+    timer_data = get_timer_data()
+    if not timer_data['active']:
+        return redirect(url_for('thankyou'))
     complete_form = CompleteTestForm()
     user = session.get('user')
     if complete_form.validate_on_submit():
