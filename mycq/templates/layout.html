@@ -13,9 +13,20 @@
 </style>
 </head>
 <body>
-    <div class="header">MyCQ</div>
+    <a href="/">
+    <div class="header">
+        {% if active %}Time Remaining: {{ time_remaining_str }} {% endif %}
+    </div>
+    </a>
     <div class="inner-body">
     {% block content %} {% endblock %}      
     </div>
+    {% if active %}
+    <script>
+       var time_remaining = {{ time_remaining|int }};
+       var minutes = round(time_remaining / 60);
+       var seconds = time_remaining - minutes * 60;
+    </script>
+    {% endif %}
 </body>
 </html>
