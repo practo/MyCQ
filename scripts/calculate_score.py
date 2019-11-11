@@ -33,7 +33,7 @@ for user_key in user_keys:
                         result['q_correct'], result['q_incorrect']))
     user_store.hset(user_key, 'score', user_score)
 
-top_users = sorted(user_scores, key=lambda x: x[-1], reverse=True)
+top_users = sorted(user_scores, key=lambda x: x[5], reverse=True)
 cw = csv.writer(sys.stdout)
 cw.writerow(('id', 'name', 'email', 'cgpa', 'branch', 'score', 'no_of_q_correct', 'no_of_q_incorrect'))
 for user in top_users:
