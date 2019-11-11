@@ -9,7 +9,7 @@ class User():
         self.name = form.name.data
         self.email = form.email.data
         self.branch = form.branch.data
-        self.roll_no = form.roll_no.data
+        self.cgpa = form.cgpa.data
 
     def get_id(self):
         return self.id
@@ -30,7 +30,7 @@ class User():
             'name': self.name,
             'email': self.email,
             'branch': self.branch,
-            'roll_no': self.roll_no,
+            'cgpa': self.cgpa,
             'score': self.score
         })
 

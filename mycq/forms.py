@@ -1,10 +1,10 @@
-from flask.ext.wtf import Form, TextField, RadioField, Required, validators
+from flask.ext.wtf import Form, TextField, RadioField, Required, validators, FloatField
 from flask.ext.wtf.html5 import EmailField, IntegerField
 from mycq import user_store
 
 class SignupForm(Form):
     name = TextField("Name", validators=[Required()])
-    roll_no = TextField("Roll No", validators=[Required()])
+    cgpa = FloatField("CGPA", validators=[Required()])
     branch = TextField("Branch", validators=[Required()])
     email = EmailField("Email", validators=[Required(), validators.Email()])
     token = TextField("Registration Token",

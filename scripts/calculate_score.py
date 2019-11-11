@@ -29,12 +29,12 @@ for user_key in user_keys:
     user = user_store.hgetall(user_key)
     result = calculate_result(user['id'])
     user_score = result['score']
-    user_scores.append((user['id'], user['name'], user['email'], user['roll_no'], user['branch'], user_score,
+    user_scores.append((user['id'], user['name'], user['email'], user['cgpa'], user['branch'], user_score,
                         result['q_correct'], result['q_incorrect']))
     user_store.hset(user_key, 'score', user_score)
 
 top_users = sorted(user_scores, key=lambda x: x[-1], reverse=True)
 cw = csv.writer(sys.stdout)
-cw.writerow(('id', 'name', 'email', 'roll_no', 'branch', 'score', 'no_of_q_correct', 'no_of_q_incorrect'))
+cw.writerow(('id', 'name', 'email', 'cgpa', 'branch', 'score', 'no_of_q_correct', 'no_of_q_incorrect'))
 for user in top_users:
     cw.writerow(user)
