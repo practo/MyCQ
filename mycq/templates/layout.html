@@ -15,7 +15,7 @@
 <body>
     <a href="/">
     <div class="header">
-        {% if active %}Time Remaining: {{ time_remaining_str }} {% endif %}
+        {% if active %}Time Remaining: <span id="time_remaining"> {{ time_remaining_str }} </span> {% endif %}
     </div>
     </a>
     <div class="inner-body">
@@ -24,8 +24,35 @@
     {% if active %}
     <script>
        var time_remaining = {{ time_remaining|int }};
-       var minutes = round(time_remaining / 60);
-       var seconds = time_remaining - minutes * 60;
+       var count_down_date = new Date();
+       count_down_date.setSeconds(count_down_date.getSeconds() + time_remaining);
+       var countDownDate = count_down_date.getTime();
+       var x = setInterval(function() {
+
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for hours, minutes and seconds
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          var hours_display = (hours < 10)? "0" + hours : hours;
+          var minutes_display = (minutes < 10)? "0" + minutes : minutes;
+          var seconds_display = (seconds < 10)? "0" + seconds : seconds;
+          document.getElementById("time_remaining").innerHTML = hours_display + ":"
+          + minutes_display + ":" + seconds_display;
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("time_remaining").innerHTML = "00:00:00";
+          }
+        }, 1000);
+    
     </script>
     {% endif %}
 </body>
